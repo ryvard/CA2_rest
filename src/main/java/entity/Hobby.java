@@ -1,10 +1,12 @@
 package entity;
 
+import java.util.List;
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -20,6 +22,8 @@ public class Hobby
     
     private String name;
     private String description;
+    @ManyToMany(mappedBy = "hobbies")
+    private List<Person> persons;
 
     public Hobby()
     {
