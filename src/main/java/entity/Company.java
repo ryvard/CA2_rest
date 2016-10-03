@@ -10,7 +10,7 @@ import javax.persistence.Id;
  * @author miaryvard
  */
 @Entity
-public class Company
+public class Company extends InfoEntity
 {
 
     @Id

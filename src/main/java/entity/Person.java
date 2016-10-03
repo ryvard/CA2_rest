@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
  * @author miaryvard
  */
 @Entity
-public class Person
+public class Person extends InfoEntity
 {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
