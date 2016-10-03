@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -18,6 +19,8 @@ public class Phone
     
     private String phone;
     private String description;
+    @ManyToOne
+    private InfoEntity infoEntity;
 
     public Phone()
     {
