@@ -6,6 +6,8 @@
 package entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -15,8 +17,18 @@ import javax.persistence.Id;
 @Entity
 public class InfoEntity
 {
-     @Id
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
+    private String email;
+    
+    public InfoEntity() {
+        
+    }
+    
+    public InfoEntity(String email) {
+        this.email = email;
+    }
 
     public Long getId()
     {
@@ -26,5 +38,13 @@ public class InfoEntity
     public void setId(Long id)
     {
         this.id = id;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
