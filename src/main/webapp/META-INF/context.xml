@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/CA2_rest"/>
+<Context path="/CA2_rest">
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="CA2_rest" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/CA2_rest?zeroDateTimeBehavior=convertToNull" username="root"/>
+</Context>
