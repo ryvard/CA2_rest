@@ -4,13 +4,13 @@ import entity.Person;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class PersonFacade implements IPersonFacade
 {
 
     EntityManagerFactory emf;
-    EntityManager em = emf.createEntityManager();
-
+    
     public PersonFacade()
     {
     }
@@ -18,11 +18,19 @@ public class PersonFacade implements IPersonFacade
     public PersonFacade(EntityManagerFactory emf)
     {
         this.emf = emf;
+        
+    }
+    
+    public void setEmf(EntityManagerFactory emf)
+    {
+        this.emf = emf;
     }
 
     @Override
     public Person addPerson(Person p)
     {
+        EntityManager em = emf.createEntityManager();
+        
         try
         {
             em.getTransaction().begin();
@@ -38,6 +46,8 @@ public class PersonFacade implements IPersonFacade
     @Override
     public Person editPerson(Person person)
     {
+        EntityManager em = emf.createEntityManager();
+        
         try
         {
             em.getTransaction().begin();
@@ -58,6 +68,8 @@ public class PersonFacade implements IPersonFacade
     @Override
     public Person deletePerson(int id)
     {
+        EntityManager em = emf.createEntityManager();
+        
         try
         {
             em.getTransaction().begin();
@@ -74,6 +86,7 @@ public class PersonFacade implements IPersonFacade
     @Override
     public Person getPerson(int id)
     {
+        EntityManager em = emf.createEntityManager();
 
         try
         {
@@ -92,6 +105,7 @@ public class PersonFacade implements IPersonFacade
     @Override
     public Person getPerson(String number)
     {
+        EntityManager em = emf.createEntityManager();
 
         try
         {
@@ -110,6 +124,8 @@ public class PersonFacade implements IPersonFacade
     @Override
     public int countPeople(String hobby)
     {
+        EntityManager em = emf.createEntityManager();
+        
         try
         {
             em.getTransaction().begin();
@@ -125,7 +141,7 @@ public class PersonFacade implements IPersonFacade
     @Override
     public List<Person> getPersons()
     {
-
+        EntityManager em = emf.createEntityManager();
         List<Person> persons = null;
 
         try
@@ -143,7 +159,7 @@ public class PersonFacade implements IPersonFacade
     @Override
     public List<Person> getPersons(int zip)
     {
-
+        EntityManager em = emf.createEntityManager();
         List<Person> persons = null;
 
         try
@@ -161,6 +177,7 @@ public class PersonFacade implements IPersonFacade
     @Override
     public List<Person> getPersons(String hobby)
     {
+        EntityManager em = emf.createEntityManager();
         List<Person> persons = null;
         try
         {
