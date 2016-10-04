@@ -19,11 +19,11 @@ import static org.junit.Assert.*;
 
 
 public class PersonFacadeTest {
-    EntityManagerFactory emf;
-    PersonFacade fp;
-    
+    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU_CA2");
+    private static IPersonFacade facade;
+        
     public PersonFacadeTest() {
-        fp = new PersonFacade();
+        facade = new PersonFacade(emf);
     }
     
     @BeforeClass
@@ -37,14 +37,11 @@ public class PersonFacadeTest {
     @Before
     public void setUp() {
         System.out.println("Setup");
-        emf = Persistence.createEntityManagerFactory("PU_CA2");
-        fp.setEmf(emf);
         HashMap<String, Object> puproperties = new HashMap();
         puproperties.put("javax.persistence.sql-load-script-source", "scripts/ClearDB.sql");
         Persistence.generateSchema("PU_CA2", puproperties);
         Persistence.generateSchema("PU_CA2", null);
-        
-        
+                
     }
     
     @After
@@ -56,11 +53,11 @@ public class PersonFacadeTest {
      */
     @Test
     public void testGetPerson() {
+        
         System.out.println("getPerson");
         int id = 0;
-        PersonFacade instance = new PersonFacade();
         Person expResult = null;
-        Person result = instance.getPerson(id);
+        Person result = facade.getPerson(id);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
