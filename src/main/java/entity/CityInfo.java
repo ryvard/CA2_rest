@@ -21,11 +21,9 @@ import javax.persistence.OneToMany;
 public class CityInfo
 {
 
+//    @GeneratedValue (strategy = GenerationType.IDENTITY)
+//    private Long id;
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
-   
-    
     private int zip;
     private String city;
     
@@ -45,15 +43,15 @@ public class CityInfo
         this.city = city;
     }   
     
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
+//    public Long getId()
+//    {
+//        return id;
+//    }
+//
+//    public void setId(Long id)
+//    {
+//        this.id = id;
+//    }
 
     public int getZipCode()
     {
