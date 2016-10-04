@@ -8,8 +8,8 @@ import javax.persistence.EntityManagerFactory;
 
 public class PersonFacade implements IPersonFacade
 {
-    public EntityManagerFactory emf;
-    public EntityManager em = emf.createEntityManager();
+    EntityManagerFactory emf;
+    EntityManager em = emf.createEntityManager();
     
     public PersonFacade()
     {
@@ -18,6 +18,20 @@ public class PersonFacade implements IPersonFacade
     public PersonFacade(EntityManagerFactory emf)
     {
         this.emf = emf;
+    }
+    
+    @Override
+    public Person addPerson(Person p)
+    {
+        try{
+        em.getTransaction().begin();
+        em.persist(p);
+        em.getTransaction().commit();
+        return p;
+        }
+        finally{
+            em.close();
+        }
     }
     
     @Override
@@ -37,6 +51,31 @@ public class PersonFacade implements IPersonFacade
             em.close();
         }
             
+    }
+    
+    @Override
+    public Person getPerson(String number)
+    {
+                
+        try
+        {
+            em.getTransaction().begin();
+            Person p = em.find(Person.class, number);
+            em.remove(em);
+            em.getTransaction().commit();
+            return p;
+        }
+        finally
+        {
+            em.close();
+        }
+            
+    }
+    
+    @Override
+    public int countPeople(String hobby)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -59,7 +98,7 @@ public class PersonFacade implements IPersonFacade
     }
 
     @Override
-    public List<Person> getPersons(int zipCode)
+    public List<Person> getPersons(int zip)
     {
         
         List<Person> persons = null;
@@ -67,7 +106,7 @@ public class PersonFacade implements IPersonFacade
         try
         {
             em.getTransaction().begin();
-            //persons = em.createQuery("Select p from Person p where p.address").getResultList();
+            persons = em.createQuery("Select p from Person p where p.zip =:"+zip).getResultList();
             em.getTransaction().commit();
             return persons;
         }
@@ -76,5 +115,20 @@ public class PersonFacade implements IPersonFacade
             em.close();
         }
     }
-    
+
+    @Override
+    public List<Person> getPersons(String hobby)
+    {
+        List<Person> persons = null;
+        try
+        {
+            em.getTransaction().begin();
+            persons = em.createQuery("Select p from Person p where p.hobby =:"+hobby).getResultList();
+            return persons;
+        } finally
+        {
+            em.close();
+        }
+    }    
+
 }

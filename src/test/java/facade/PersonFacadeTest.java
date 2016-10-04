@@ -8,6 +8,7 @@ package facade;
 import entity.Person;
 import java.util.HashMap;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import org.junit.After;
@@ -19,11 +20,11 @@ import static org.junit.Assert.*;
 
 
 public class PersonFacadeTest {
-    EntityManagerFactory emf;
-    PersonFacade fp;
-    
+    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU_CA2");
+    private static IPersonFacade facade;
+        
     public PersonFacadeTest() {
-        fp = new PersonFacade();
+        facade = new PersonFacade(emf);
     }
     
     @BeforeClass
@@ -37,11 +38,12 @@ public class PersonFacadeTest {
     @Before
     public void setUp() {
         System.out.println("Setup");
+        EntityManager em = emf.createEntityManager();
         HashMap<String, Object> puproperties = new HashMap();
         puproperties.put("javax.persistence.sql-load-script-source", "scripts/ClearDB.sql");
-        Persistence.generateSchema("restEx2", puproperties);
-        Persistence.generateSchema("restEx2", null);
-        fp.setEmf(Persistence.createEntityManagerFactory("restEx2"));
+        Persistence.generateSchema("PU_CA2", puproperties);
+        Persistence.generateSchema("PU_CA2", null);
+
     }
     
     @After
@@ -53,11 +55,11 @@ public class PersonFacadeTest {
      */
     @Test
     public void testGetPerson() {
+        
         System.out.println("getPerson");
         int id = 0;
-        PersonFacade instance = new PersonFacade();
         Person expResult = null;
-        Person result = instance.getPerson(id);
+        Person result = facade.getPerson(id);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -69,9 +71,8 @@ public class PersonFacadeTest {
     @Test
     public void testGetPersons_0args() {
         System.out.println("getPersons");
-        PersonFacade instance = new PersonFacade();
         List<Person> expResult = null;
-        List<Person> result = instance.getPersons();
+        List<Person> result = facade.getPersons();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -81,12 +82,11 @@ public class PersonFacadeTest {
      * Test of getPersons method, of class PersonFacade.
      */
     @Test
-    public void testGetPersons_int() {
+    public void testGetPersonsByZipcode() {
         System.out.println("getPersons");
         int zipCode = 0;
-        PersonFacade instance = new PersonFacade();
         List<Person> expResult = null;
-        List<Person> result = instance.getPersons(zipCode);
+        List<Person> result = facade.getPersons(zipCode);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
