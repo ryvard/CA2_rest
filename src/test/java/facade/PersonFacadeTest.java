@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 
 public class PersonFacadeTest {
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU_CA2");
-    private static IPersonFacade facade;
+    private static PersonFacade facade;
         
     public PersonFacadeTest() {
         facade = new PersonFacade(emf);
