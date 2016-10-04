@@ -82,7 +82,7 @@ public class PersonFacadeTest {
      * Test of getPersons method, of class PersonFacade.
      */
     @Test
-    public void testGetPersons_int() {
+    public void testGetPersonsByZipcode() {
         System.out.println("getPersons");
         int zipCode = 0;
         List<Person> expResult = null;
