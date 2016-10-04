@@ -8,6 +8,7 @@ package facade;
 import entity.Person;
 import java.util.HashMap;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import org.junit.After;
@@ -37,11 +38,12 @@ public class PersonFacadeTest {
     @Before
     public void setUp() {
         System.out.println("Setup");
+        EntityManager em = emf.createEntityManager();
         HashMap<String, Object> puproperties = new HashMap();
         puproperties.put("javax.persistence.sql-load-script-source", "scripts/ClearDB.sql");
         Persistence.generateSchema("PU_CA2", puproperties);
         Persistence.generateSchema("PU_CA2", null);
-                
+
     }
     
     @After
@@ -69,9 +71,8 @@ public class PersonFacadeTest {
     @Test
     public void testGetPersons_0args() {
         System.out.println("getPersons");
-        PersonFacade instance = new PersonFacade();
         List<Person> expResult = null;
-        List<Person> result = instance.getPersons();
+        List<Person> result = facade.getPersons();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -84,9 +85,8 @@ public class PersonFacadeTest {
     public void testGetPersons_int() {
         System.out.println("getPersons");
         int zipCode = 0;
-        PersonFacade instance = new PersonFacade();
         List<Person> expResult = null;
-        List<Person> result = instance.getPersons(zipCode);
+        List<Person> result = facade.getPersons(zipCode);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
