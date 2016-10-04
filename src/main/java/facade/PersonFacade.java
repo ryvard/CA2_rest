@@ -5,14 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-/**
- *
- * @author miaryvard
- */
+
 public class PersonFacade implements IPersonFacade
 {
-    EntityManagerFactory emf;
-
+    public EntityManagerFactory emf;
+    public EntityManager em = emf.createEntityManager();
+    
     public PersonFacade()
     {
     }
@@ -25,8 +23,7 @@ public class PersonFacade implements IPersonFacade
     @Override
     public Person getPerson(int id)
     {
-        EntityManager em = emf.createEntityManager();
-        
+                
         try
         {
             em.getTransaction().begin();
@@ -45,7 +42,7 @@ public class PersonFacade implements IPersonFacade
     @Override
     public List<Person> getPersons()
     {
-        EntityManager em = emf.createEntityManager();
+        
         List<Person> persons = null;
         
         try
@@ -64,7 +61,7 @@ public class PersonFacade implements IPersonFacade
     @Override
     public List<Person> getPersons(int zipCode)
     {
-        EntityManager em = emf.createEntityManager();
+        
         List<Person> persons = null;
         
         try
