@@ -26,7 +26,7 @@ public class CityInfo
     private Long id;
    
     
-    private int zipCode;
+    private int zip;
     private String city;
     
     
@@ -41,7 +41,7 @@ public class CityInfo
     
     public CityInfo(int zipCode, String city)
     {
-        this.zipCode = zipCode;
+        this.zip = zipCode;
         this.city = city;
     }   
     
@@ -57,12 +57,12 @@ public class CityInfo
 
     public int getZipCode()
     {
-        return zipCode;
+        return zip;
     }
 
     public void setZipCode(int zipCode)
     {
-        this.zipCode = zipCode;
+        this.zip = zipCode;
     }
 
     public String getCity()
