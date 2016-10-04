@@ -20,6 +20,16 @@ public class PersonFacade implements IPersonFacade
         this.emf = emf;
     }
     
+    public void setEmf(EntityManagerFactory emf)
+    {
+        this.emf = emf;
+    }
+
+    public EntityManagerFactory getEmf()
+    {
+        return emf;
+    }
+    
     @Override
     public Person getPerson(int id)
     {

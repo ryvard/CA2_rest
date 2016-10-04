@@ -37,11 +37,14 @@ public class PersonFacadeTest {
     @Before
     public void setUp() {
         System.out.println("Setup");
+        emf = Persistence.createEntityManagerFactory("PU_CA2");
+        fp.setEmf(emf);
         HashMap<String, Object> puproperties = new HashMap();
         puproperties.put("javax.persistence.sql-load-script-source", "scripts/ClearDB.sql");
-        Persistence.generateSchema("restEx2", puproperties);
-        Persistence.generateSchema("restEx2", null);
-        fp.setEmf(Persistence.createEntityManagerFactory("restEx2"));
+        Persistence.generateSchema("PU_CA2", puproperties);
+        Persistence.generateSchema("PU_CA2", null);
+        
+        
     }
     
     @After
