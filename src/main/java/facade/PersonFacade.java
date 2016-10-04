@@ -8,8 +8,8 @@ import javax.persistence.EntityManagerFactory;
 
 public class PersonFacade implements IPersonFacade
 {
-    public EntityManagerFactory emf;
-    public EntityManager em = emf.createEntityManager();
+    EntityManagerFactory emf;
+    EntityManager em = emf.createEntityManager();
     
     public PersonFacade()
     {
