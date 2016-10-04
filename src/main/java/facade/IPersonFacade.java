@@ -9,7 +9,12 @@ import java.util.List;
  */
 public interface IPersonFacade
 {
+    public Person addPerson(Person p);
     public Person getPerson(int id);
+    public Person getPerson(String number);
     public List<Person> getPersons();
     public List<Person> getPersons(int zipCode);
+    public List<Person> getPersons(String hobby);
+    public int countPeople(String hobby);
+    
 }
