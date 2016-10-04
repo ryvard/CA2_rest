@@ -9,6 +9,7 @@ import entity.Person;
 import facade.PersonFacade;
 import java.util.List;
 import com.google.gson.*;
+import javax.persistence.Persistence;
 
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -19,6 +20,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -31,6 +33,9 @@ public class RESTPerson {
 
     @Context
     private UriInfo context;
+    
+    @Context
+    private HttpHeaders headers;
 
     PersonFacade pf;
 
@@ -38,6 +43,7 @@ public class RESTPerson {
      * Creates a new instance of RESTPerson
      */
     public RESTPerson() {
+        pf = new PersonFacade( Persistence.createEntityManagerFactory("PU_CA2") );
     }
 
     @GET
@@ -82,12 +88,12 @@ public class RESTPerson {
 
     }
     
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String postPerson(String content) {
-       // Person p = 
-    }
+//    @POST
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public String postPerson(String content) {
+//       // Person p = 
+//    }
 
     /**
      * Retrieves representation of an instance of entity.RESTPerson
