@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 public class CompanyFacade implements ICompanyFacade
 {
     EntityManagerFactory emf;
+    EntityManager em = emf.createEntityManager();
 
     public CompanyFacade()
     {
@@ -25,7 +26,6 @@ public class CompanyFacade implements ICompanyFacade
     @Override
     public Company getCompany(int cvr)
     {
-        EntityManager em = emf.createEntityManager();
         
         try
         {
@@ -41,9 +41,40 @@ public class CompanyFacade implements ICompanyFacade
     }
 
     @Override
+    public Company getCompany(String number)
+    {
+         try
+        {
+            em.getTransaction().begin();
+            Company c  = (Company)em.createQuery("Select c from Company c where c.number =:"+number).getSingleResult();
+            em.getTransaction().commit();
+            return c;
+        }
+        finally
+        {
+            em.close();
+        }       
+    }
+    
+    @Override
+    public Company getCompany(String table, String data)
+    {
+        
+        try
+        {
+           em.getTransaction().begin();
+           Company c = (Company)em.createQuery("Select c from Company c where c."+table+" =:"+data).getSingleResult();
+           em.getTransaction().commit();
+           return c;
+        } finally
+        {
+            em.close();
+        }
+    }
+    
+    @Override
     public List<Company> getCompanies()
     {
-        EntityManager em = emf.createEntityManager();
         List<Company> companies = null;
         
         try
@@ -59,4 +90,21 @@ public class CompanyFacade implements ICompanyFacade
         }
     }
     
+    @Override
+    public List<Company> getCompanies(int numEmployees)
+    {
+        List<Company> companies = null;
+        
+        try
+        {
+            em.getTransaction().begin();
+            companies  = em.createQuery("Select c from Company c where c.numEmployees > "+numEmployees).getResultList();
+            em.getTransaction().commit();
+            return companies;
+        }
+        finally
+        {
+            em.close();
+        }
+    }    
 }

@@ -75,7 +75,16 @@ public class PersonFacade implements IPersonFacade
     @Override
     public int countPeople(String hobby)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try
+        {
+            em.getTransaction().begin();
+            int count = em.createQuery("Select COUNT(hobby) from Person p where p.hobby =:"+hobby).getFirstResult();
+            em.getTransaction().commit();
+            return count;
+        } finally
+        {
+            em.close();
+        }
     }
 
     @Override
