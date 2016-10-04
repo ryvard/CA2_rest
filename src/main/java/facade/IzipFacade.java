@@ -5,11 +5,14 @@
  */
 package facade;
 
+import entity.CityInfo;
+import java.util.List;
+
 /**
  *
  * @author Jmach
  */
-public interface ZipFacade
+public interface IzipFacade
 {
-    
+    public List<CityInfo> getZipcodes();
 }
