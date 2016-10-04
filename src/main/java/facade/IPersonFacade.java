@@ -10,6 +10,8 @@ import java.util.List;
 public interface IPersonFacade
 {
     public Person addPerson(Person p);
+    public Person editPerson(Person p);
+    public Person deletePerson(int id);
     public Person getPerson(int id);
     public Person getPerson(String number);
     public List<Person> getPersons();
