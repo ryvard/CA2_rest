@@ -19,7 +19,7 @@ public class Company extends InfoEntity
     
     private String name;
     private String description;
-    private String cvr;
+    private int cvr;
     private String numEmployees;
     private String marketValue;
 
@@ -27,7 +27,7 @@ public class Company extends InfoEntity
     {
     }
 
-    public Company(String name, String description, String cvr, String numEmployees, String marketValue)
+    public Company(String name, String description, int cvr, String numEmployees, String marketValue)
     {
         this.name = name;
         this.description = description;
@@ -68,12 +68,12 @@ public class Company extends InfoEntity
         this.description = description;
     }
 
-    public String getCvr()
+    public int getCvr()
     {
         return cvr;
     }
 
-    public void setCvr(String cvr)
+    public void setCvr(int cvr)
     {
         this.cvr = cvr;
     }
