@@ -20,11 +20,11 @@ import static org.junit.Assert.*;
 
 
 public class PersonFacadeTest {
-    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU_CA2");
-    private static PersonFacade facade;
+    EntityManagerFactory emf;
+    PersonFacade facade;
         
     public PersonFacadeTest() {
-        facade = new PersonFacade(emf);
+        facade = new PersonFacade();
     }
     
     @BeforeClass
@@ -38,16 +38,23 @@ public class PersonFacadeTest {
     @Before
     public void setUp() {
         System.out.println("Setup");
-        EntityManager em = emf.createEntityManager();
         HashMap<String, Object> puproperties = new HashMap();
         puproperties.put("javax.persistence.sql-load-script-source", "scripts/ClearDB.sql");
         Persistence.generateSchema("PU_CA2", puproperties);
         Persistence.generateSchema("PU_CA2", null);
-
+        emf = Persistence.createEntityManagerFactory("PU_CA2");
+        facade.setEmf(emf);
+        System.out.println("DB: " + facade.getPersons().size());
     }
     
     @After
     public void tearDown() {
+        System.out.println("TearDown");
+        emf.close();
+        HashMap<String, Object> puproperties = new HashMap();
+        puproperties.put("javax.persistence.sql-load-script-source", "scripts/ClearDB.sql");
+        Persistence.generateSchema("PU_CA2", puproperties);
+        Persistence.generateSchema("PU_CA2", null);
     }
 
     /**
@@ -57,39 +64,37 @@ public class PersonFacadeTest {
     public void testGetPerson() {
         
         System.out.println("getPerson");
-        int id = 0;
-        Person expResult = null;
+        int id = 1;
+        Person expResult = new Person("Emma", "Blomsterberg");
         Person result = facade.getPerson(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult.getFirstName(), result.getFirstName());
     }
 
     /**
      * Test of getPersons method, of class PersonFacade.
      */
-    @Test
-    public void testGetPersons_0args() {
-        System.out.println("getPersons");
-        List<Person> expResult = null;
-        List<Person> result = facade.getPersons();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPersons method, of class PersonFacade.
-     */
-    @Test
-    public void testGetPersonsByZipcode() {
-        System.out.println("getPersons");
-        int zipCode = 0;
-        List<Person> expResult = null;
-        List<Person> result = facade.getPersons(zipCode);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testGetPersons_0args() {
+//        System.out.println("getPersons");
+//        List<Person> expResult = null;
+//        List<Person> result = facade.getPersons();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getPersons method, of class PersonFacade.
+//     */
+//    @Test
+//    public void testGetPersonsByZipcode() {
+//        System.out.println("getPersons");
+//        int zipCode = 0;
+//        List<Person> expResult = null;
+//        List<Person> result = facade.getPersons(zipCode);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     
 }

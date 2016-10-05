@@ -10,11 +10,11 @@ package facade;
  * @author Bruger
  */
 public class test {
-//    public static void main(String[] args) {
-//        IPersonFacade ip = new PersonFacade();
-//        IPersonFacade ip2 = new NoSQLPersonFacade();
-//        OuterFacade of = new OuterFacade(ip);
-//        
-//        OuterFacade of = new OuterFacade(ip2);
-//    }
+    public static void main(String[] args) {
+        IPersonFacade ip = new PersonFacade();
+        //IPersonFacade ip2 = new NoSQLPersonFacade();
+        OuterFacade of = new OuterFacade(ip);
+        
+        //OuterFacade of = new OuterFacade(ip2);
+    }
 }
