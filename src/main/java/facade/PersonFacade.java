@@ -73,6 +73,7 @@ public class PersonFacade implements IPersonFacade
         {
             em.getTransaction().begin();
             Person p = em.find(Person.class, id);
+            System.out.println("Personen som er fundet i databasen "+p);
             em.remove(p);
             em.getTransaction().commit();
             return p;
@@ -111,7 +112,7 @@ public class PersonFacade implements IPersonFacade
         {
             em.getTransaction().begin();
             Person p = em.find(Person.class, number);
-            em.remove(em);
+            //em.remove(em);
             em.getTransaction().commit();
             return p;
         } finally
