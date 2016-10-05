@@ -72,4 +72,9 @@ public class Hobby
         return "Hobby{" + "id=" + id + ", name=" + name + ", description=" + description + '}';
     }
     
+    public void removePersonFromHobbyList(Person p)
+    {
+        persons.remove(p);
+    }
+    
 }

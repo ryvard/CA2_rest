@@ -98,18 +98,18 @@ public class PersonFacadeTest {
     /**
      * Test of deletePerson method, of class PersonFacade.
      */
-//    @Test
-//    public void testDeletePerson() {
-//        System.out.println("deletePerson");
-//        long id = 2;
-//        Person expResult = instance.getPerson(id);
-//        Person result = instance.deletePerson(id);
-//        System.out.println(result);
-//        assertEquals(expResult.getFirstName(), result.getFirstName());
-//        result = instance.getPerson(id);
-////        assertNull(result);
-//        
-//    }
+    @Test
+    public void testDeletePerson() {
+        System.out.println("deletePerson");
+        long id = 2;
+        Person expResult = instance.getPerson(id);
+        Person result = instance.deletePerson(id);
+        System.out.println(result);
+        assertEquals(expResult.getFirstName(), result.getFirstName());
+        result = instance.getPerson(id);
+//        assertNull(result);
+        
+    }
 
     /**
      * Test of getPerson method, of class PersonFacade.
