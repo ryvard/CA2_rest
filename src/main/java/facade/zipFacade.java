@@ -16,25 +16,25 @@ import javax.persistence.EntityManagerFactory;
  */
 public class zipFacade implements IzipFacade
 {
+
     EntityManagerFactory emf;
-    EntityManager em = emf.createEntityManager();
 
     @Override
     public List<CityInfo> getZipcodes()
     {
+        EntityManager em = emf.createEntityManager();
         List<CityInfo> zipCodes = null;
-        
+
         try
         {
             em.getTransaction().begin();
             zipCodes = em.createQuery("Select z from CityInfo z where z.zip").getResultList();
             em.getTransaction().commit();
             return zipCodes;
-        }
-        finally
+        } finally
         {
             em.close();
         }
     }
-    
+
 }
