@@ -75,14 +75,8 @@ public class RESTPerson {
         {
             throw new NotFoundEx("Person with id:"+id+" doesn't exist");
         }
-        JsonObject jo = new JsonObject();
-        jo.addProperty("id", p.getId());
-        jo.addProperty("fistName", p.getFirstName());
-        jo.addProperty("lastName", p.getLastName());
-
-        String jsonStr = new Gson().toJson(jo);
-        return jsonStr;
-
+        
+        return new Gson().toJson(new PersonMapper(p));
     }
     
 //    @POST
