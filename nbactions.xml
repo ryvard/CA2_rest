@@ -36,7 +36,7 @@
             </goals>
             <properties>
                 <test>${packageClassName}</test>
-                <skipTests>true</skipTests>
+                
             </properties>
         </action>
         <action>

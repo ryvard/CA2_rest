@@ -66,6 +66,13 @@ public class Person extends InfoEntity
     {
         this.lastName = lastName;
     }
+    
+    public void removePersonFromHobby(Person p)
+    {
+        for (int i = 0; i < hobbies.size(); i++) {
+            hobbies.get(i).removePersonFromHobbyList(p);
+        }
+    }
 
     @Override
     public String toString()

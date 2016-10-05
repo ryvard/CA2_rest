@@ -107,7 +107,7 @@ public class PersonFacadeTest {
 //        System.out.println(result);
 //        assertEquals(expResult.getFirstName(), result.getFirstName());
 //        result = instance.getPerson(id);
-////        assertNull(result);
+//        assertNull(result);
 //        
 //    }
 
