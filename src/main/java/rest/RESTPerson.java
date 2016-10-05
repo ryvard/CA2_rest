@@ -59,23 +59,6 @@ public class RESTPerson {
         for(Person p : persons){
             pMappers.add(new PersonMapper(p));
         }
-//        List<String> jsonList = new ArrayList<>();
-//        String jsonString = " ";
-//
-//        for (int i = 0; i < persons.size(); i++) {
-//            Person p = persons.get(i);
-//
-//            JsonObject jo = new JsonObject();
-//
-//            jo.addProperty("id", p.getId());
-//            jo.addProperty("firstName", p.getFirstName());
-//            jo.addProperty("lastName", p.getLastName());
-//
-//            jsonString = new Gson().toJson(jo);
-//            jsonList.add(jsonString);
-//        }
-
-//         return jsonList;
         return new Gson().toJson(pMappers);
     }
 
