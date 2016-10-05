@@ -15,7 +15,7 @@ import javax.ws.rs.ext.Provider;
  * @author miaryvard
  */
 @Provider
-public class NotFoundExMapper implements ExceptionMapper<NotFoundEx>
+public class GeneralExceptionMapper implements ExceptionMapper<Exception>
 {
     @Context
     ServletContext context;
@@ -23,7 +23,7 @@ public class NotFoundExMapper implements ExceptionMapper<NotFoundEx>
     static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     
     @Override
-    public Response toResponse(NotFoundEx e)
+    public Response toResponse(Exception e)
     {
         boolean isDebug = context.getInitParameter("debug").equals("true");
 

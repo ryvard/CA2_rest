@@ -94,7 +94,7 @@ public class PersonFacade implements IPersonFacade
             Person p = em.find(Person.class, id);
             //em.remove(em);
             em.getTransaction().commit();
-            System.out.println("person" + p.getFirstName());
+            //System.out.println("person" + p.getFirstName());
             return p;
         } finally
         {
