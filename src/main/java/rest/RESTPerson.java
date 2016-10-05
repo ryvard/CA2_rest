@@ -24,6 +24,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import jsonmappers.PersonMapper;
 
 /**
  * REST Web Service
@@ -32,7 +33,7 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("person")
 public class RESTPerson {
-
+    static Gson gson = new Gson();
     @Context
     private UriInfo context;
     
@@ -51,27 +52,31 @@ public class RESTPerson {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("complete")
-    public List<String> getAllPerson() {
+    public String getAllPerson() {
 
         List<Person> persons = pf.getPersons();
-        List<String> jsonList = new ArrayList<>();
-        String jsonString = " ";
-
-        for (int i = 0; i < persons.size(); i++) {
-            Person p = persons.get(i);
-
-            JsonObject jo = new JsonObject();
-
-            jo.addProperty("id", p.getId());
-            jo.addProperty("firstName", p.getFirstName());
-            jo.addProperty("lastName", p.getLastName());
-
-            jsonString = new Gson().toJson(jo);
-            jsonList.add(jsonString);
+        List<PersonMapper> pMappers = new ArrayList<PersonMapper>();
+        for(Person p : persons){
+            pMappers.add(new PersonMapper(p));
         }
+//        List<String> jsonList = new ArrayList<>();
+//        String jsonString = " ";
+//
+//        for (int i = 0; i < persons.size(); i++) {
+//            Person p = persons.get(i);
+//
+//            JsonObject jo = new JsonObject();
+//
+//            jo.addProperty("id", p.getId());
+//            jo.addProperty("firstName", p.getFirstName());
+//            jo.addProperty("lastName", p.getLastName());
+//
+//            jsonString = new Gson().toJson(jo);
+//            jsonList.add(jsonString);
+//        }
 
-        return jsonList;
-//        return new Gson().toJson(pf.getPersons());
+//         return jsonList;
+        return new Gson().toJson(pMappers);
     }
 
     @GET
@@ -80,9 +85,9 @@ public class RESTPerson {
     public String getPerson(@PathParam("id") long id) throws NotFoundEx {
         
        
-        
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FØR P NULLPOINTER");
         Person p = pf.getPerson(id);
-        
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Efter ");
         if( p == null )
         {
             throw new NotFoundEx("Person with id:"+id+" doesn't exist");
