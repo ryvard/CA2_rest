@@ -5,6 +5,7 @@
  */
 package rest;
 
+import RestException.NotFoundEx;
 import entity.Person;
 import facade.PersonFacade;
 import java.util.List;
@@ -76,9 +77,16 @@ public class RESTPerson {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("complete/{id}")
-    public String getPerson(@PathParam("id") long id) {
-
+    public String getPerson(@PathParam("id") long id) throws NotFoundEx {
+        
+       
+        
         Person p = pf.getPerson(id);
+        
+        if( p == null )
+        {
+            throw new NotFoundEx("Person with id:"+id+" doesn't exist");
+        }
         JsonObject jo = new JsonObject();
         jo.addProperty("id", p.getId());
         jo.addProperty("fistName", p.getFirstName());

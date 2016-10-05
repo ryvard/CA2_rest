@@ -1,15 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RestException;
 
 /**
  *
  * @author miaryvard
  */
-public class NotFoundEx
+public class NotFoundEx extends Exception
 {
-    
+    public NotFoundEx()
+    {
+    }
+    public NotFoundEx(String msg)
+    {
+        super(msg);
+    }
 }
