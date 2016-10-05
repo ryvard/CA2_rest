@@ -4,7 +4,6 @@ import entity.Person;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 public class PersonFacade implements IPersonFacade
 {
@@ -66,7 +65,7 @@ public class PersonFacade implements IPersonFacade
     }
 
     @Override
-    public Person deletePerson(int id)
+    public Person deletePerson(long id)
     {
         EntityManager em = emf.createEntityManager();
         
@@ -84,7 +83,7 @@ public class PersonFacade implements IPersonFacade
     }
 
     @Override
-    public Person getPerson(int id)
+    public Person getPerson(long id)
     {
         EntityManager em = emf.createEntityManager();
 

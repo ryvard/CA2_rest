@@ -11,8 +11,8 @@ public interface IPersonFacade
 {
     public Person addPerson(Person p);
     public Person editPerson(Person p);
-    public Person deletePerson(int id);
-    public Person getPerson(int id);
+    public Person deletePerson(long id);
+    public Person getPerson(long id);
     public Person getPerson(String number);
     public List<Person> getPersons();
     public List<Person> getPersons(int zipCode);

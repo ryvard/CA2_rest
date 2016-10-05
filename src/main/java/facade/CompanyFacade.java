@@ -60,7 +60,7 @@ public class CompanyFacade implements ICompanyFacade
     }
 
     @Override
-    public Company deleteCompany(int id)
+    public Company deleteCompany(long id)
     {
         try
         {
