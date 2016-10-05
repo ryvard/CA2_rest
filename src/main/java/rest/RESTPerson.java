@@ -9,6 +9,7 @@ import entity.Person;
 import facade.PersonFacade;
 import java.util.List;
 import com.google.gson.*;
+import java.util.ArrayList;
 import javax.persistence.Persistence;
 
 import javax.ws.rs.core.Context;
@@ -44,40 +45,32 @@ public class RESTPerson {
      */
     public RESTPerson() {
         pf = new PersonFacade( Persistence.createEntityManagerFactory("PU_CA2") );
-    }
-    
-    
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("test")
-    public String testgetAllPerson() {
-        return "test";
-    }
-    
+    }   
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("complete")
-    public String getAllPerson() {
+    public List<String> getAllPerson() {
 
         List<Person> persons = pf.getPersons();
+        List<String> jsonList = new ArrayList<>();
         String jsonString = " ";
 
         for (int i = 0; i < persons.size(); i++) {
             Person p = persons.get(i);
 
-//            JsonObject jo = new JsonObject();
-//
-//            jo.addProperty("id", persons.get(i).getId());
-//            jo.addProperty("firstName", persons.get(i).getFirstName());
-//            jo.addProperty("lastName", persons.get(i).getLastName());
-//
-//            jsonString += new Gson().toJson(jo);
-              jsonString += new Gson().toJson(p);
+            JsonObject jo = new JsonObject();
 
+            jo.addProperty("id", p.getId());
+            jo.addProperty("firstName", p.getFirstName());
+            jo.addProperty("lastName", p.getLastName());
+
+            jsonString = new Gson().toJson(jo);
+            jsonList.add(jsonString);
         }
 
-        return jsonString;
+        return jsonList;
+//        return new Gson().toJson(pf.getPersons());
     }
 
     @GET
@@ -86,13 +79,12 @@ public class RESTPerson {
     public String getPerson(@PathParam("id") long id) {
 
         Person p = pf.getPerson(id);
-//        JsonObject jo = new JsonObject();
-//        jo.addProperty("id", p.getId());
-//        jo.addProperty("fistName", p.getFirstName());
-//        jo.addProperty("lastName", p.getLastName());
-//
-//        String jsonStr = new Gson().toJson(jo);
-        String jsonStr = new Gson().toJson(p);
+        JsonObject jo = new JsonObject();
+        jo.addProperty("id", p.getId());
+        jo.addProperty("fistName", p.getFirstName());
+        jo.addProperty("lastName", p.getLastName());
+
+        String jsonStr = new Gson().toJson(jo);
         return jsonStr;
 
     }
