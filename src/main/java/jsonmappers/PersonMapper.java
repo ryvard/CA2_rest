@@ -14,6 +14,7 @@ public class PersonMapper
     long id;
     String firstName;
     String street;
+    String city;
     
    public PersonMapper(entity.Person p){
         id = p.getId();
