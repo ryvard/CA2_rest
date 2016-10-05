@@ -47,6 +47,13 @@ public class RESTPerson {
     }
     
     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("test")
+    public String testgetAllPerson() {
+        return "test";
+    }
+    
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -76,7 +83,7 @@ public class RESTPerson {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("complete/{id}")
-    public String getPerson(@PathParam("id") int id) {
+    public String getPerson(@PathParam("id") long id) {
 
         Person p = pf.getPerson(id);
 //        JsonObject jo = new JsonObject();

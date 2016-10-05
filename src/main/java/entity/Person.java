@@ -14,9 +14,9 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Person extends InfoEntity
 {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id;
+    //@Id
+    //@GeneratedValue (strategy = GenerationType.IDENTITY)
+    //private Long id;
     
     private String firstName;
     private String lastName;
@@ -35,17 +35,17 @@ public class Person extends InfoEntity
     }
 
     
-    @Override
-    public Long getId()
-    {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
+//    @Override
+//    public Long getId()
+//    {
+//        return id;
+//    }
+//
+//    @Override
+//    public void setId(Long id)
+//    {
+//        this.id = id;
+//    }
 
     public String getFirstName()
     {
@@ -70,7 +70,7 @@ public class Person extends InfoEntity
     @Override
     public String toString()
     {
-        return "Person{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + '}';
+        return "Person{firstName=" + firstName + ", lastName=" + lastName + '}';
     }
     
 }
