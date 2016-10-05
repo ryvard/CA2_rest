@@ -84,14 +84,16 @@ public class PersonFacadeTest {
     /**
      * Test of editPerson method, of class PersonFacade.
      */
-//    @Test
-//    public void testEditPerson() {
-//        System.out.println("editPerson");
-//        Person expResult = new Person("editPerson", "editPerson");
-//        Person result = instance.editPerson();
-//        assertEquals(expResult, result);
-//        
-//    }
+    @Test
+    public void testEditPerson() {
+        System.out.println("editPerson");
+        int id = 1;
+        Person expResult = instance.getPerson(1);
+        expResult.setFirstName("Mette");
+        Person result = instance.editPerson(expResult);
+        assertEquals(expResult.getFirstName(), result.getFirstName());
+        
+    }
 
     /**
      * Test of deletePerson method, of class PersonFacade.
