@@ -20,6 +20,7 @@ public class Person extends InfoEntity
     
     private String firstName;
     private String lastName;
+//    private Hobby hobby;
     
     @ManyToMany
     private List<Hobby> hobbies;
@@ -33,19 +34,6 @@ public class Person extends InfoEntity
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
-    
-//    @Override
-//    public Long getId()
-//    {
-//        return id;
-//    }
-//
-//    @Override
-//    public void setId(Long id)
-//    {
-//        this.id = id;
-//    }
 
     public String getFirstName()
     {
@@ -66,6 +54,7 @@ public class Person extends InfoEntity
     {
         this.lastName = lastName;
     }
+    
     
     public void removePersonFromHobby(Person p)
     {

@@ -32,11 +32,13 @@ import jsonmappers.PersonMapper;
  * @author emmablomsterberg
  */
 @Path("person")
-public class RESTPerson {
+public class RESTPerson
+{
+
     static Gson gson = new Gson();
     @Context
     private UriInfo context;
-    
+
     @Context
     private HttpHeaders headers;
 
@@ -45,18 +47,21 @@ public class RESTPerson {
     /**
      * Creates a new instance of RESTPerson
      */
-    public RESTPerson() {
-        pf = new PersonFacade( Persistence.createEntityManagerFactory("PU_CA2") );
-    }   
+    public RESTPerson()
+    {
+        pf = new PersonFacade(Persistence.createEntityManagerFactory("PU_CA2"));
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("complete")
-    public String getAllPerson() {
+    public String getAllPerson()
+    {
 
         List<Person> persons = pf.getPersons();
         List<PersonMapper> pMappers = new ArrayList<PersonMapper>();
-        for(Person p : persons){
+        for (Person p : persons)
+        {
             pMappers.add(new PersonMapper(p));
         }
         return new Gson().toJson(pMappers);
@@ -65,26 +70,28 @@ public class RESTPerson {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("complete/{id}")
-    public String getPerson(@PathParam("id") long id) throws NotFoundEx {
-        
-       
+    public String getPerson(@PathParam("id") long id) throws NotFoundEx
+    {
+
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FØR P NULLPOINTER");
         Person p = pf.getPerson(id);
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Efter ");
-        if( p == null )
+        if (p == null)
         {
-            throw new NotFoundEx("Person with id:"+id+" doesn't exist");
+            throw new NotFoundEx("Person with id:" + id + " doesn't exist");
         }
-        
+
         return new Gson().toJson(new PersonMapper(p));
     }
-    
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public String postPerson(String content) {
-//       // Person p = 
-//    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String postPerson(String content)
+    {
+        Person p = pf.addPerson(new Gson().fromJson(content, Person.class));
+        return new Gson().toJson(p);
+    }
 
     /**
      * Retrieves representation of an instance of entity.RESTPerson

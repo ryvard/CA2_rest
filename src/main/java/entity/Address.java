@@ -66,4 +66,16 @@ public class Address
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
     } 
+
+    public CityInfo getCityInfo()
+    {
+        return cityInfo;
+    }
+
+    public void setCityInfo(CityInfo cityInfo)
+    {
+        this.cityInfo = cityInfo;
+    }
+    
+    
 }

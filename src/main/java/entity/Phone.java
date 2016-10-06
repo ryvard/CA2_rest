@@ -63,6 +63,18 @@ public class Phone
         this.description = description;
     }
 
+    public InfoEntity getInfoEntity()
+    {
+        return infoEntity;
+    }
+
+    public void setInfoEntity(InfoEntity infoEntity)
+    {
+        this.infoEntity = infoEntity;
+    }
+    
+    
+
     @Override
     public String toString()
     {
