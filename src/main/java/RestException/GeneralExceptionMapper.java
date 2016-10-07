@@ -25,7 +25,7 @@ public class GeneralExceptionMapper implements ExceptionMapper<Exception>
     @Override
     public Response toResponse(Exception e)
     {
-        boolean isDebug = context.getInitParameter("debug").equals("true");
+        boolean isDebug =  false; //context.getInitParameter("debug").equals("true");
 
         ErrorMessage err = new ErrorMessage(e, 404, isDebug);
         err.setDescription("Tried to call ...");

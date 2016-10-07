@@ -7,6 +7,10 @@ $(function () {
         $('#getPersonList').empty();
         getPerson();
     });
+    $('#getPersonContactsBtn').click(function () {
+        $('#getContactList').empty();
+        getPC();
+    });
 
     $('#getPersonsBtn').click(function () {
         getPersons();
@@ -54,15 +58,17 @@ function createPerson() {
         url: 'api/person',
         type: 'POST',
         data: newPerson,
+        datatype: 'json',
+        contentType: "application/json; charset=utf-8",
         success: function (newPerson) {
-            //$('#createdPerson').text(newPerson);
+            $('#createdPerson').text(newPerson.firstName+' '+newPerson.lastName);
         }
     });
 }
 
 function getPC()
 {
-    var $persons = $('#getPersonContactList');
+    var $persons = $('#getContactList');
     $.ajax({
         url: 'api/person/contactinfo',
         type: 'GET',
