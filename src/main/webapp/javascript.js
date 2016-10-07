@@ -41,23 +41,23 @@ function getPerson() {
 }
 
 function getPersons() {
-    var persons = $('#getPersonsList');
+    var $persons = $('#getPersonsList');
     $.ajax({
         url: 'api/person/complete',
         type: 'GET',
         success: function (persons) {
             $.each(persons, function (i, person) {
-                persons.append('<li>First name: ' + person.firstName + ', Last name:  ' + person.lastName + '</li>');
-
+                $persons.append('<li>First name: ' + person.firstName + ', Last name:  ' + person.lastName + '</li>');
 
             });
         }
+
     });
 }
 
 function createPerson() {
-    var newPerson = '{firstName: ' + $('#firstName').val() + ', lastName: ' + $('#lastName').val() +'}';
-      console.log(newPerson);
+    var newPerson = '{firstName: ' + $('#firstName').val() + ', lastName: ' + $('#lastName').val() + '}';
+    console.log(newPerson);
     $.ajax({
         url: 'api/person',
         type: 'POST',
