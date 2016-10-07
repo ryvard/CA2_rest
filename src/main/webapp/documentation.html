@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CA2 Documentation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <ul>
+            <li><a href="Frontpage.html">Home</a></li>
+            <li><a href="index.html">REST Project</a></li>
+            <li><a class="active" href="documentation.html">Documentation</a></li>
+        </ul>
+
+        <div class="body">
+            <h1>CA 2 Object Relational Mapping, Rest, Test, Ajax and JQuery</h1>
+            <h2>Documentation</h2>
+            <div class="inner">
+                <h4>Github link</h4>
+
+                <a href="https://github.com/ryvard/CA_chatserver.git">Github</a>
+
+                <h4>Description of REST API, error responses and JSON format</h4>
+                <p class="text">
+                    <b>REST API:</b>
+
+                    <br><b>Error response:</b> Vi har forsøgt at lave error responce på vores getPerson(int id) 
+                    <br>den viser vores General exception besked i vores output men den 
+                    <br>sender ikke en fejlmeddelelse ud i browseren.
+                    <br><b>JSON format:</b>
+                </p>
+
+                <h4>Test strategy</h4>
+                <p class="text">
+                    Vi har testet vores PersonFacade klasse med JUnit test. De fleste af vores tests virker
+                    <br>med undtagelse af vores addPerson test som fejler da vores addPerson metode i facaden ikke virker. 
+                    <br>addPerson metoden virker ikke fordi der skal ligge noget i InfoEntity før vi kan ligge noget ned i
+                    <br>personen men det har vi desværre ikke nået at få sat op.
+                    <br>Vi har brugt <b>browser</b> og <b>postman</b> til at teste vores Rest API manuelt.
+                    <br>Vi har forsøgt at lave REST Assured for at teste vores REST API automatisk.
+                </p>
+
+                <h4>Inheritance strategy</h4>
+                <p class="text">
+                    Vi har brugt joined, da denne strategi laver den mest normaliserede database. 
+                    <br>Dermed slipper vi blandtandet for mange redundante data. 
+                </p>
+
+                <h4>Who did what</h4>
+                <p class="text">
+
+                    Vi har alle deltaget og hjulpet hinanden med de forskellige opgaver.
+                    <br>Vi mener at alle skal have fuld studypoints, da vi har kæmpet for at løse denne opgave.
+                    <br>På trods af at alt ikke kører, så har vi arbejdet med alle områder.
+
+                <h4>How to test the system</h4>
+                <p class="text">
+                    <u><b>Test via postman</b></u>
+
+                    <br>Kør programmet og åben postman. :D
+                    <br>
+                </p>
+                <table class="tabledoc">
+                    <tr class="tabledoc">
+                        <td class="tabledoc">
+                            GET all persons:
+                        </td>
+                        <td class="tabledoc">
+                            localhost:8080/CA2_rest/api/person/complete
+                        </td>
+                        <td class="tabledoc"> 
+                            <a href="http://localhost:8080/CA2_rest/api/person/complete">Link</a>
+                        </td>
+                    </tr>
+                    <tr class="tabledoc">
+                        <td class="tabledoc">
+                            GET person from id:
+                        </td>
+                        <td class="tabledoc">
+                            localhost:8080/CA2_rest/api/person/complete/1
+                        </td>
+                        <td class="tabledoc"> 
+                            <a href="http://localhost:8080/CA2_rest/api/person/complete/1">Link</a>
+                        </td>
+                    </tr>
+                    <tr class="tabledoc">
+                        <td class="tabledoc">
+                            GET all person with only contact info
+                        </td>
+                        <td class="tabledoc">
+                            localhost:8080/CA2_rest/api/person/contactinfo
+                        </td>
+                        <td class="tabledoc"> 
+                            <a href="http://localhost:8080/CA2_rest/api/person/contactinfo">Link</a>
+                        </td>
+                    </tr>
+                </table>
+                <p class="text">
+                    <u><b>Test via website</b></u>
+                    <br>Klik på REST Project fanen i menuen til venstre.
+                    <br> <b>Get Person section:</b> Tast id'et på den person du vil finde ind i feltet og klik derefter på "Get Person" knappen. 
+                    <br> <b>Get Persons section:</b> Klik på knappen "Get all persons".
+                    <br> <b>Create person section:</b>
+                    <br> <b>Get contact info for all persons section:</b>
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+    </body>
+</html>
