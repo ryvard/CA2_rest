@@ -4,32 +4,40 @@
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="javascript.js"></script>
     </head>
     <body>
-        <header>
-            <h1>CA2_rest</h1>
-        </header>
-        <h2>Get Person</h2>
-        <input id="getPersonId" type="text" placeholder="Person ID"><br>
-        <input id="getPersonBtn" type="submit" value="Get Person"><br>
-        <ul id="getPersonList"></ul>
-        <hr>
-        <h2>Get Persons</h2>
-        <input id="getPersonsBtn" type="submit" value="Get all Persons">
-        <ul id="getPersonsList"></ul>
-        <p id="getPersonsText"></p>
-        <hr>
-        <h2>Create Person</h2>
-        <input id="firstName" type="text" placeholder="first name"><br>
-        <input id="lastName" type="text" placeholder="lastName"><br>
-        <!--<input id="phone" type="text" placeholder="phone number"><br>-->
-        <input id="createBtn" type="submit" value="Create"><br>
-        <p id="createdPerson"></p>
-        <hr>
-        <h2>Get contact info for all persons</h2>
-        <input id="getPersonContactsBtn" type="submit" value="Get contact info">
-        <ul id="getContactList"></ul>
+        <ul class="ulmeny">
+            <li class="limeny"><a href="Frontpage.html">Home</a></li>
+            <li class="limeny"><a class="active" href="index.html">REST Project</a></li>
+            <li class="limeny"><a href="documentation.html">Documentation</a></li>
+        </ul>
+        <div class="body">
+            <header>
+                <h1>CA2_rest</h1>
+            </header>
+            <h2>Get Person</h2>
+            <input id="getPersonId" type="text" placeholder="Person ID"><br>
+            <input id="getPersonBtn" type="submit" value="Get Person"><br>
+            <ul id="getPersonList"></ul>
+            <hr>
+            <h2>Get Persons</h2>
+            <input id="getPersonsBtn" type="submit" value="Get all Persons">
+            <ul id="getPersonsList"></ul>
+            <p id="getPersonsText"></p>
+            <hr>
+            <h2>Create Person</h2>
+            <input id="firstName" type="text" placeholder="first name"><br>
+            <input id="lastName" type="text" placeholder="lastName"><br>
+            <!--<input id="phone" type="text" placeholder="phone number"><br>-->
+            <input id="createBtn" type="submit" value="Create"><br>
+            <p id="createdPerson"></p>
+            <hr>
+            <h2>Get contact info for all persons</h2>
+            <input id="getPersonContactsBtn" type="submit" value="Get contact info">
+            <ul id="getContactList"></ul>
+        </div>
     </body>
 </html>
