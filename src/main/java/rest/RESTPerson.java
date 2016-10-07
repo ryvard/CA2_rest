@@ -75,9 +75,11 @@ public class RESTPerson
 
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FØR P NULLPOINTER");
         Person p = pf.getPerson(id);
+        
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Efter ");
         if (p == null)
         {
+            System.out.println("-----------inde i if--------------");
             throw new NotFoundEx("Person with id:" + id + " doesn't exist");
         }
 
@@ -90,6 +92,7 @@ public class RESTPerson
     public String postPerson(String content)
     {
         Person p = pf.addPerson(new Gson().fromJson(content, Person.class));
+//        return new Gson().toJson(new PersonMapper(p));
         return new Gson().toJson(p);
     }
 
