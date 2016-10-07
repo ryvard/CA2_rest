@@ -128,10 +128,14 @@ public class RESTPerson
     {
         List<Person> pcontacts = pf.getContactInfos();
         List<ContactMapper> pcMappers = new ArrayList<ContactMapper>();
+        System.out.println("    hejfjdfh");
         for (Person p : pcontacts)
         {
-            System.out.println("person contact bal"+ p.getFirstName());
+            System.out.println("hej");
+            System.out.println("blad");
+            System.out.println("p: " + p.getFirstName());
             pcMappers.add(new ContactMapper(p));
+            System.out.println("hjjhgfh");
         }
         return new Gson().toJson(pcMappers);
     
