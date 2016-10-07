@@ -24,6 +24,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import jsonmappers.ContactMapper;
 import jsonmappers.PersonMapper;
 
 /**
@@ -82,19 +83,21 @@ public class RESTPerson
             System.out.println("-----------inde i if--------------");
             throw new NotFoundEx("Person with id:" + id + " doesn't exist");
         }
-
+        System.out.println("Json :"+ new Gson().toJson(new PersonMapper(p)));
+        
         return new Gson().toJson(new PersonMapper(p));
     }
 
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String postPerson(String content)
-    {
-        Person p = pf.addPerson(new Gson().fromJson(content, Person.class));
-//        return new Gson().toJson(new PersonMapper(p));
-        return new Gson().toJson(p);
-    }
+//    @POST
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public String postPerson(String content)
+//    {
+//        
+//        Person p = pf.addPerson(new Gson().fromJson(content, Person.class));
+////        return new Gson().toJson(new PersonMapper(p));
+//        return new Gson().toJson(p);
+//    }
 
     /**
      * Retrieves representation of an instance of entity.RESTPerson
@@ -117,4 +120,22 @@ public class RESTPerson
 //    @Consumes(MediaType.APPLICATION_XML)
 //    public void putXml(String content) {
 //    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("contactinfo")
+    public String getContactInfos()
+    {
+        List<Person> pcontacts = pf.getContactInfos();
+        List<ContactMapper> pcMappers = new ArrayList<ContactMapper>();
+        for (Person p : pcontacts)
+        {
+            System.out.println("person contact bal"+ p.getFirstName());
+            pcMappers.add(new ContactMapper(p));
+        }
+        return new Gson().toJson(pcMappers);
+    
+    }
+    
+    
 }

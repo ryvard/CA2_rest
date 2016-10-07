@@ -18,16 +18,16 @@ public class PersonMapper
     private String lastName;
     private String street;
     private String city;
-    private int zipCode;
-    private String phone;
-    private List hobby;
+//    private int zipCode;
+//    private String phone;
+//    private List hobby;
     
    public PersonMapper(entity.Person p){
         id = p.getId();
         firstName = p.getFirstName();
         lastName = p.getLastName();
         street = p.getAddress().getStreet();
-        city = p.getAddress().getCityInfo().getCity();
-        zipCode = p.getAddress().getCityInfo().getZipCode();
+//        city = p.getAddress().getCityInfo().getCity();
+//        zipCode = p.getAddress().getCityInfo().getZipCode();
     }
 }

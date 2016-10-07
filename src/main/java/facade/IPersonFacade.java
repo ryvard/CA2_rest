@@ -18,5 +18,7 @@ public interface IPersonFacade
     public List<Person> getPersons(int zipCode);
     public List<Person> getPersons(String hobby);
     public int countPeople(String hobby);
+    public List<Person> getContactInfos();
+    public Person getContactInfo(int id);
     
 }

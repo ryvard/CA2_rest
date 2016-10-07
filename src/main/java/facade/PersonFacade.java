@@ -192,4 +192,26 @@ public class PersonFacade implements IPersonFacade
         }
     }
 
+    @Override
+    public List<Person> getContactInfos()
+    {
+        EntityManager em = emf.createEntityManager();
+        List<Person> personContacts = null;
+        try
+        {
+            em.getTransaction().begin();
+            personContacts = em.createQuery("Select p from Person p").getResultList();
+            return personContacts;
+        }finally
+        {
+            em.close();
+        }
+    }
+
+    @Override
+    public Person getContactInfo(int id)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

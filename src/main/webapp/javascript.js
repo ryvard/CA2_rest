@@ -23,6 +23,7 @@ function getPerson() {
         url: 'api/person/complete/' + id,
         type: 'GET',
         success: function (data) {
+            console.log("Lastname: " + data.firstName)
             $('#getPersonList').append('<li>First name: ' + data.firstName + '</li>');
             $('#getPersonList').append('<li>Last name: ' + data.lastName + '</li>');
             $('#getPersonList').append('<li>Street: ' + data.street + '</li>');
@@ -63,7 +64,24 @@ function createPerson() {
         type: 'POST',
         data: newPerson,
         success: function (newPerson) {
-            $('#createdPerson').text(newPerson);
+            //$('#createdPerson').text(newPerson);
         }
     });
+}
+
+function getPC()
+{
+    var $persons = $('#getPersonContactList');
+    $.ajax({
+        url: 'api/person/contactinfo',
+        type: 'GET',
+        success: function (persons) {
+            $.each(persons, function (i, contact) {
+                $persons.append('<li>id: ' + contact.id + ', name:  ' + contact.name + '</li>');
+
+            });
+        }
+
+    });
+
 }
