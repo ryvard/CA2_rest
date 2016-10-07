@@ -5,6 +5,7 @@
  */
 package jsonmappers;
 
+import entity.Hobby;
 import java.util.List;
 
 /**
@@ -19,8 +20,6 @@ public class PersonMapper
     private String street;
     private String city;
     private int zipCode;
-//    private String phone;
-//    private List hobby;
     
    public PersonMapper(entity.Person p){
         id = p.getId();

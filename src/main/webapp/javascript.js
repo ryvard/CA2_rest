@@ -28,14 +28,6 @@ function getPerson() {
             $('#getPersonList').append('<li>Street: ' + data.street + '</li>');
             $('#getPersonList').append('<li>City: ' + data.city + '</li>');
             $('#getPersonList').append('<li>Zipcode: ' + data.zipCode + '</li>');
-
-
-//            $('#getPersonText').text('id: '+data.id+'<br>');
-//            $('#getPersonText').text('first name: '+data.firstName);
-//            $('#getPersonText').text('last name: '+data.lastName);
-//            $('#getPersonText').text('street: '+data.street);
-//            $('#getPersonText').text('city: '+data.city);
-//            $('#getPersonText').text('zipcode: '+data.zipCode);
         }
     });
 }
