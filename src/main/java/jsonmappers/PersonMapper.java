@@ -18,7 +18,7 @@ public class PersonMapper
     private String lastName;
     private String street;
     private String city;
-//    private int zipCode;
+    private int zipCode;
 //    private String phone;
 //    private List hobby;
     
@@ -27,7 +27,7 @@ public class PersonMapper
         firstName = p.getFirstName();
         lastName = p.getLastName();
         street = p.getAddress().getStreet();
-//        city = p.getAddress().getCityInfo().getCity();
-//        zipCode = p.getAddress().getCityInfo().getZipCode();
+        city = p.getAddress().getCityInfo().getCity();
+        zipCode = p.getAddress().getCityInfo().getZipCode();
     }
 }

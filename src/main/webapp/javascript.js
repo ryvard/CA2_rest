@@ -23,7 +23,6 @@ function getPerson() {
         url: 'api/person/complete/' + id,
         type: 'GET',
         success: function (data) {
-            console.log("Lastname: " + data.firstName)
             $('#getPersonList').append('<li>First name: ' + data.firstName + '</li>');
             $('#getPersonList').append('<li>Last name: ' + data.lastName + '</li>');
             $('#getPersonList').append('<li>Street: ' + data.street + '</li>');
